@@ -22,9 +22,8 @@ public class RabbitMqTest {
 
     @Test
     public void sendMsgTest(){
-
         Msg msg= new Msg().setMsgHead("msg_head").setMsgBody("the_msg_body");
-        rabbitTemplate.convertAndSend("qx.direct","qx", msg); //exchange, eoutingKey, object
+        rabbitTemplate.convertAndSend("qx.direct","qx", msg); //exchange, routingKey, object
     }
 
     @Test
@@ -49,6 +48,11 @@ public class RabbitMqTest {
          */
         Binding binding= new Binding("qx", Binding.DestinationType.QUEUE,"qx.direct","qx",null);
         amqpAdmin.declareBinding(binding);
+    }
+
+    @Test
+    public void receiveMsg(){
+        //SignUpDto out = (SignUpDto) template.receiveAndConvert("myQueue");
     }
 
     @Test

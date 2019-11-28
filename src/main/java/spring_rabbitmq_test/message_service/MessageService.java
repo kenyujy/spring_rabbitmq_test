@@ -18,6 +18,9 @@ public class MessageService {
 
         String msgBody= msg.getMsgBody();
         System.out.println(msgBody);
+        // basicAck(long deliveryTag, boolean multiple) 只确认本条消息
+        // basicNack(long deliveryTag, boolean multiple, boolean requeue) //不确认收到，重新放回队列
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
         //channel.basicReject(message.getMessageProperties().getDeliveryTag(), true); //requeue =true
     }
 }
