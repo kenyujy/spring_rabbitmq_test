@@ -23,7 +23,8 @@ public class RabbitMqTest {
     @Test
     public void sendMsgTest(){
         Msg msg= new Msg().setMsgHead("msg_head").setMsgBody("the_msg_body");
-        rabbitTemplate.convertAndSend("qx.direct","qx", msg); //exchange, routingKey, object
+        for(int i=0; i<5; i++)
+            rabbitTemplate.convertAndSend("qx.direct","qx", msg); //exchange, routingKey, object
     }
 
     @Test
@@ -59,6 +60,11 @@ public class RabbitMqTest {
     public void sendWrongMsgTest(){
 
         rabbitTemplate.convertAndSend("amq.direct","test", "hello"); //exchange, eoutingKey, object
+    }
+
+    @Test
+    public void cal(){
+        System.out.println(5/3);
     }
 
 }

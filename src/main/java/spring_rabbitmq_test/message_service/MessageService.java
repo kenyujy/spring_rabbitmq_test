@@ -13,7 +13,7 @@ import java.io.IOException;
 @Service
 public class MessageService {
 
-    @RabbitListener(queues ="qx")  //listener 会一直监听消息队列
+    @RabbitListener(queues ="test")  //注解，声明这个方法监听队列，listener 会一直监听消息队列
     public void getTestMessage(Message message, Msg msg, Channel channel) throws IOException {  //收消息, 自动转换为Msg 对象类型
 
         String msgBody= msg.getMsgBody();
